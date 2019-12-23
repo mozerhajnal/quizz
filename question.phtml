@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>PHP Quizzer</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="public/style.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>PHP Quizzer</h1>
+            </div>
+        </header> 
+        <main>
+            <div class="container">
+                <div class="current">Question <?= $question['question_number'] ?> of <?=  $total ?></div>
+                <p class="question">
+                    <?= $question['text'];?>
+                </p>
+                <form action="/submit-answer" method="POST">
+                    <ul class="choices">
+                    <?php foreach($choices as $choice):?>
+                        <li><input type="radio" name="choice" value="<?=$choice['id']?>"><?= $choice['text']?></li>
+                    <?php endforeach; ?>
+                    </ul>
+                    <input type="submit" value="Submit">
+                    <input type="hidden" name="number" value="<?= $number?>">
+                </form>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                Copyright &copy 2019, PHP Quizzer
+            </div>
+        </footer>
+    </body>
+</html>
